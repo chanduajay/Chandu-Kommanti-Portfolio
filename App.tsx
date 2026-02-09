@@ -39,7 +39,7 @@ const App: React.FC = () => {
 
     const handleResize = () => engine.handleResize();
     window.addEventListener('resize', handleResize);
-    const timer = setTimeout(() => setShowWelcome(false), 8000); // Extended slightly to allow user to read
+    const timer = setTimeout(() => setShowWelcome(false), 8000); 
 
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -95,7 +95,7 @@ const App: React.FC = () => {
 
   return (
     <div 
-      className="relative w-full h-screen bg-[#f8fafc] overflow-hidden cursor-pointer"
+      className="relative w-full h-screen bg-[#f8fafc] overflow-hidden"
       onClick={handleGlobalClick}
     >
       <div ref={containerRef} className="absolute inset-0 z-0" />
@@ -106,7 +106,7 @@ const App: React.FC = () => {
         appState={appState}
         currentBaseModel={currentBaseModel}
         isAutoRotate={isAutoRotate}
-        isInfoVisible={showWelcome}
+        isInfoVisible={showWelcome || showDetails}
         onDismantle={handleDismantle}
         onRebuild={handleRebuild}
         onNewScene={handleNewScene}
@@ -114,6 +114,7 @@ const App: React.FC = () => {
         onToggleRotation={() => { setIsAutoRotate(!isAutoRotate); engineRef.current?.setAutoRotate(!isAutoRotate); }}
         onToggleInfo={() => setShowWelcome(!showWelcome)}
       />
+      
       <WelcomeScreen visible={showWelcome} />
       
       <InformationCard 

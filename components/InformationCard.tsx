@@ -347,7 +347,7 @@ export const InformationCard: React.FC<InformationCardProps> = ({ section, isVis
   };
 
   return (
-    <div className="fixed inset-0 z-[300] flex items-end sm:items-center justify-center pointer-events-none p-4 sm:p-10">
+    <div className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center pointer-events-none p-4 sm:p-10">
       {/* Background Mask */}
       <div className={`absolute inset-0 bg-slate-950/40 backdrop-blur-sm pointer-events-auto sm:hidden transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`} onClick={onClose} />
       

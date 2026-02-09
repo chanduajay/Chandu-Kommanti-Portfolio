@@ -13,7 +13,7 @@ interface WelcomeScreenProps {
 export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ visible }) => {
   return (
     <div className={`
-        absolute inset-0 pointer-events-none flex items-center justify-center z-[200] select-none px-6
+        absolute inset-0 pointer-events-none flex items-center justify-center z-[40] select-none px-6
         transition-all duration-1000 ease-in-out
         ${visible ? 'opacity-100 backdrop-blur-md bg-slate-950/20 pointer-events-auto' : 'opacity-0 scale-125 pointer-events-none invisible'}
     `}>

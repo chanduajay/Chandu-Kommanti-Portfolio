@@ -48,19 +48,22 @@ export const UIOverlay: React.FC<UIOverlayProps> = ({
     'Contact': 'Contact'
   };
   
+  // HUD is hidden completely if any modal/welcome is visible
+  if (isInfoVisible) return null;
+
   return (
-    <div className={`absolute inset-0 pointer-events-none select-none overflow-hidden z-[100] transition-all duration-500 ${isInfoVisible ? 'opacity-0 invisible' : 'opacity-100'}`}>
+    <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-[20] animate-in fade-in duration-500">
       
       {/* Top Left: Navigation */}
-      <div className="absolute top-6 left-6 pointer-events-auto z-10">
+      <div className="absolute top-6 left-6 pointer-events-auto">
         <PortalMenu onSelect={onNewScene} current={currentBaseModel} map={sectionNameMap} />
       </div>
 
       {/* Top Right: System Controls */}
-      <div className="absolute top-6 right-6 pointer-events-auto flex gap-3 z-10">
+      <div className="absolute top-6 right-6 pointer-events-auto flex gap-3">
          <TacticalButton 
             onClick={onToggleInfo} 
-            active={isInfoVisible} 
+            active={false} 
             icon={<Info size={20} />} 
             label="ME" 
             glow="indigo"
@@ -75,7 +78,7 @@ export const UIOverlay: React.FC<UIOverlayProps> = ({
       </div>
 
       {/* Bottom Command Area */}
-      <div className="absolute bottom-10 left-0 w-full flex flex-col items-center pointer-events-none px-6 z-20">
+      <div className="absolute bottom-10 left-0 w-full flex flex-col items-center pointer-events-none px-6">
         <div className="pointer-events-auto flex flex-col items-center gap-6 w-full max-w-lg">
             
             {/* Minimal Status Readout */}
@@ -165,7 +168,7 @@ const IndustrialButton: React.FC<any> = ({ onClick, icon, label }) => (
 );
 
 const HolographicMorph: React.FC<any> = ({ onSelect, map }) => (
-    <div className="relative p-5 bg-slate-950/95 border border-cyan-500/30 rounded-[2.5rem] grid grid-cols-2 sm:grid-cols-4 gap-2 w-full shadow-2xl overflow-hidden pointer-events-auto z-30">
+    <div className="relative p-5 bg-slate-950/95 border border-cyan-500/30 rounded-[2.5rem] grid grid-cols-2 sm:grid-cols-4 gap-2 w-full shadow-2xl overflow-hidden pointer-events-auto">
         <div className="col-span-full text-center pb-3 border-b border-white/5 mb-1">
             <span className="text-[9px] font-black text-cyan-400 uppercase tracking-[0.5em] animate-pulse">Select Blueprint</span>
         </div>
